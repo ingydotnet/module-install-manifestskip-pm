@@ -1,4 +1,4 @@
-package Module::Install::Manifest;
+package Module::Install::ManifestSkip;
 use strict;
 use warnings;
 use 5.008003;
@@ -12,6 +12,7 @@ BEGIN {
 }
 
 my $skip_file = "MANIFEST.SKIP";
+
 sub manifest_skip {
     my $self = shift;
     return unless $self->is_admin;
@@ -24,7 +25,7 @@ sub manifest_skip {
             or die "Can't open $skip_file for input: $!";
         my $input = do {local $/; <IN>};
         close IN;
-        if ($input =~ s/(.*\n)\s*\n.*/$1/s and $input =~ /\S/) {
+        if ($input =~ s/(.*?\n)\s*\n.*/$1/s and $input =~ /\S/) {
             $keepers = $input;
         }
     }
@@ -39,7 +40,7 @@ sub manifest_skip {
 
     close OUT;
 
-    $self->admin->clean_files('MANIFEST');
+    $self->clean_files('MANIFEST');
 }
 
 sub _skip_files {
