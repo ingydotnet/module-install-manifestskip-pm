@@ -1,4 +1,8 @@
 ---
+version: 0.11
+date:    Sat Sep 11 10:50:15 EDT 2010
+changes:
+- Added some additional skips for MAC OSX, emac backups and komodo. 
 version: 0.10
 date:    Fri Sep 10 10:35:31 PDT 2010
 changes:
