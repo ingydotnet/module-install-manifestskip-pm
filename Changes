@@ -1,4 +1,9 @@
 ---
+version: 0.12
+date:    Wed Sep 15 09:40:52 PDT 2010
+changes:
+- jnap++ found and fixed a bug from his last patch
+---
 version: 0.11
 date:    Tue Sep 14 16:36:08 PDT 2010
 changes:
