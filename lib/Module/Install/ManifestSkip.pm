@@ -68,7 +68,7 @@ sub _skip_files {
 ^todo
 ^ToDo$
 ## avoid OS X finder files
-^\.DS_Store$
+\.DS_Store$
 ## skip komodo project files
 \.kpf$
 ## ignore emacs and vim backup files
