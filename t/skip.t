@@ -3,16 +3,27 @@ use TestML -run, -dev_test;
 __DATA__
 %TestML 1.0
 
-Plan = 1;
+Plan = 7;
 
-RmPath('t/sample1/inc');
-RmPath('t/MANIFEST.SKIP');
-
-test = (dir, cmd, want) {
+test = (dir, want) {
     Chdir(dir);
+    RunCommand('make purge');
     RunCommand('perl Makefile.PL');
     RunCommand('make manifest');
-    Read('t/MANIFEST') == *manifest;
+    manifest = Read('MANIFEST');
+
+    Label = 'MANIFEST has';
+    manifest ~~ "Makefile.PL";
+    manifest ~~ "lib/Sample1.pm";
+    manifest ~~ "MANIFEST";
+
+    Label = 'Manifest contains';
+    manifest.Has("MANIFEST.SKIP").Not.OK;
+    manifest.Has("ToDo").Not.OK;
+    manifest.Has(".DS_Store").Not.OK;
+    manifest.Has("Foo~").Not.OK;
+    RunCommand('make purge');
+    RunCommand('rm MANIFEST.SKIP');
 };
 
 test(*dir, *manifest);
