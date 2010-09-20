@@ -1,8 +1,9 @@
 ---
 version: 0.14
-date:    
+date:    Mon Sep 20 09:52:31 PDT 2010
 changes:
 - refactored tests
+- changed message
 ---
 version: 0.12
 date:    Wed Sep 15 09:40:52 PDT 2010

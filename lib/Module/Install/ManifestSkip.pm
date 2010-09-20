@@ -7,7 +7,7 @@ use Module::Install::Base;
 
 use vars qw($VERSION @ISA);
 BEGIN {
-    $VERSION = '0.12';
+    $VERSION = '0.14';
     @ISA     = 'Module::Install::Base';
 }
 
@@ -17,7 +17,7 @@ sub manifest_skip {
     my $self = shift;
     return unless $self->is_admin;
 
-    print "Updating $skip_file\n";
+    print "manifest_skip\n";
 
     my $keepers;
     if (-e $skip_file) {
