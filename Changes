@@ -1,4 +1,11 @@
 ---
+version: 0.15
+date:    Tue May 17 22:52:08 EST 2011
+changes:
+- Stardoc
+- Package
+- add .devel-local
+---
 version: 0.14
 date:    Mon Sep 20 09:52:31 PDT 2010
 changes:

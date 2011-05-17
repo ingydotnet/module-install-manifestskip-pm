@@ -1,3 +1,10 @@
+##
+# name:      Module::Install::ManifestSkip
+# abstract:  Generate a MANIFEST.SKIP file
+# author:    Ingy döt Net <ingy@cpan.org>
+# copyright: 2010, 2011
+# license:   perl
+
 package Module::Install::ManifestSkip;
 use strict;
 use warnings;
@@ -7,7 +14,7 @@ use Module::Install::Base;
 
 use vars qw($VERSION @ISA);
 BEGIN {
-    $VERSION = '0.14';
+    $VERSION = '0.15';
     @ISA     = 'Module::Install::Base';
 }
 
@@ -62,6 +69,7 @@ sub _skip_files {
 ^core$
 ^out$
 ^tmon.out$
+^.devel-local$
 ^\w$
 ^foo.*
 ^notes
@@ -77,12 +85,6 @@ sub _skip_files {
 }
 
 1;
-
-=encoding utf8
-
-=head1 NAME
-
-Module::Install::ManifestSkip - Generate a MANIFEST.SKIP file
 
 =head1 SYNOPSIS
 
@@ -118,18 +120,3 @@ This is good because you never forget to add new files to your C<MANIFEST>.
 The only problems are that you always need to generate a C<MANIFEST.SKIP>
 file, and you need to add C<MANIFEST> to your clean_files, or delete it by
 hand. This module does these things for you.
-
-=head1 AUTHOR
-
-Ingy döt Net <ingy@cpan.org>
-
-=head1 COPYRIGHT
-
-Copyright (c) 2010. Ingy döt Net.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-See L<http://www.perl.com/perl/misc/Artistic.html>
-
-=cut
