@@ -2,21 +2,18 @@
 # name:      Module::Install::ManifestSkip
 # abstract:  Generate a MANIFEST.SKIP file
 # author:    Ingy döt Net <ingy@cpan.org>
-# copyright: 2010, 2011
 # license:   perl
+# copyright: 2010, 2011
 
 package Module::Install::ManifestSkip;
+use 5.008003;
 use strict;
 use warnings;
-use 5.008003;
 
-use Module::Install::Base;
+use base 'Module::Install::Base';
 
-use vars qw($VERSION @ISA);
-BEGIN {
-    $VERSION = '0.15';
-    @ISA     = 'Module::Install::Base';
-}
+our $VERSION = '0.16';
+our $AUTHOR_ONLY = 1;
 
 my $skip_file = "MANIFEST.SKIP";
 
