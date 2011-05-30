@@ -12,7 +12,7 @@ use warnings;
 
 use base 'Module::Install::Base';
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 our $AUTHOR_ONLY = 1;
 
 my $skip_file = "MANIFEST.SKIP";
@@ -56,6 +56,7 @@ sub _skip_files {
 ^pod2htm.*
 ^MANIFEST\.SKIP$
 ^MANIFEST\.bak$
+^xt/
 ^\.git/
 ^\.gitignore
 ^\.gitmodules
