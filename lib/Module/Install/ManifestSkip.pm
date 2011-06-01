@@ -12,7 +12,7 @@ use warnings;
 
 use base 'Module::Install::Base';
 
-our $VERSION = '0.17';
+our $VERSION = '0.18';
 our $AUTHOR_ONLY = 1;
 
 my $skip_file = "MANIFEST.SKIP";
@@ -45,6 +45,8 @@ sub manifest_skip {
     close OUT;
 
     $self->clean_files('MANIFEST');
+    $self->clean_files('MANIFEST.SKIP')
+        if grep /^clean$/, @_;
 }
 
 sub _skip_files {
@@ -107,6 +109,13 @@ Just put a blank line after your entries, and they will be left alone.
 
 This module also adds 'MANIFEST' to the C<clean_files()> list so that
 C<make clean> will remove your C<MANIFEST>.
+
+=head1 OPTIONS
+
+If you don't plan on adding anything to the stock MANIFEST.SKIP and just want
+C<make clean> to delete it, say this:
+
+    manifest_skip 'clean';
 
 =head1 THEORY
 
