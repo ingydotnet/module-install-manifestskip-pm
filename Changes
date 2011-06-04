@@ -1,4 +1,9 @@
 ---
+version: 0.19
+date:    Sun Jun  5 02:27:37 EST 2011
+changes:
+- Use Module::Manifest::Skip for content.
+---
 version: 0.18
 date:    Wed Jun  1 19:56:48 EST 2011
 changes:

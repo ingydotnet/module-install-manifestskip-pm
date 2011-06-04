@@ -4,7 +4,6 @@ NAME
 SYNOPSIS
         use inc::Module::Install;
 
-        name     'Foo';
         all_from 'lib/Foo.pm';
 
         manifest_skip;
@@ -12,10 +11,10 @@ SYNOPSIS
         WriteAll;
 
 DESCRIPTION
-    This module generates a "MANIFEST.SKIP" file for you that contains the
-    common files that people do not want in their "MANIFEST" files. The SKIP
-    file is generated each time that you (the module author) run
-    "Makefile.PL".
+    This module generates a "MANIFEST.SKIP" file for you (using
+    Module::Manifest::Skip) that contains the common files that people do
+    not want in their "MANIFEST" files. The SKIP file is generated each time
+    that you (the module author) run "Makefile.PL".
 
     You can add your own custom entries at the top of the "MANIFEST" file.
     Just put a blank line after your entries, and they will be left alone.
@@ -39,6 +38,9 @@ THEORY
     "MANIFEST.SKIP" file, and you need to add "MANIFEST" to your
     clean_files, or delete it by hand. This module does these things for
     you.
+
+SEE ALSO
+    *   Module::Manifest::Skip
 
 AUTHOR
     Ingy döt Net <ingy@cpan.org>

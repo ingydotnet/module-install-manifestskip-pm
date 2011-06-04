@@ -4,6 +4,8 @@
 # author:    Ingy döt Net <ingy@cpan.org>
 # license:   perl
 # copyright: 2010, 2011
+# see:
+# - Module::Manifest::Skip
 
 package Module::Install::ManifestSkip;
 use 5.008003;
@@ -12,7 +14,11 @@ use warnings;
 
 use base 'Module::Install::Base';
 
-our $VERSION = '0.18';
+my $requires = "
+use Module::Manifest::Skip 0.10 ();
+";
+
+our $VERSION = '0.19';
 our $AUTHOR_ONLY = 1;
 
 my $skip_file = "MANIFEST.SKIP";
@@ -21,67 +27,20 @@ sub manifest_skip {
     my $self = shift;
     return unless $self->is_admin;
 
-    print "manifest_skip\n";
+    eval $requires; die $@ if $@;
 
-    my $keepers;
-    if (-e $skip_file) {
-        open IN, $skip_file
-            or die "Can't open $skip_file for input: $!";
-        my $input = do {local $/; <IN>};
-        close IN;
-        if ($input =~ s/(.*?\n)\s*\n.*/$1/s and $input =~ /\S/) {
-            $keepers = $input;
-        }
-    }
+    print "Writing $skip_file\n";
+
     open OUT, '>', $skip_file
         or die "Can't open $skip_file for output: $!";;
 
-    if ($keepers) {
-        print OUT "$keepers\n";
-    }
-
-    print OUT _skip_files();
+    print OUT Module::Manifest::Skip->new->text;
 
     close OUT;
 
     $self->clean_files('MANIFEST');
-    $self->clean_files('MANIFEST.SKIP')
+    $self->clean_files($skip_file)
         if grep /^clean$/, @_;
-}
-
-sub _skip_files {
-    return <<'...';
-^Makefile$
-^Makefile\.old$
-^pm_to_blib$
-^blib/
-^pod2htm.*
-^MANIFEST\.SKIP$
-^MANIFEST\.bak$
-^xt/
-^\.git/
-^\.gitignore
-^\.gitmodules
-/\.git/
-\.svn/
-^\.vimrc$
-\.sw[op]$
-^core$
-^out$
-^tmon.out$
-^.devel-local$
-^\w$
-^foo.*
-^notes
-^todo
-^ToDo$
-## avoid OS X finder files
-\.DS_Store$
-## skip komodo project files
-\.kpf$
-## ignore emacs and vim backup files
-~$
-...
 }
 
 1;
@@ -90,7 +49,6 @@ sub _skip_files {
 
     use inc::Module::Install;
 
-    name     'Foo';
     all_from 'lib/Foo.pm';
 
     manifest_skip;
@@ -99,10 +57,10 @@ sub _skip_files {
 
 =head1 DESCRIPTION
 
-This module generates a C<MANIFEST.SKIP> file for you that contains the
-common files that people do not want in their C<MANIFEST> files. The SKIP
-file is generated each time that you (the module author) run
-C<Makefile.PL>.
+This module generates a C<MANIFEST.SKIP> file for you (using
+L<Module::Manifest::Skip>) that contains the common files that people do not
+want in their C<MANIFEST> files. The SKIP file is generated each time that you
+(the module author) run C<Makefile.PL>.
 
 You can add your own custom entries at the top of the C<MANIFEST> file.
 Just put a blank line after your entries, and they will be left alone.
