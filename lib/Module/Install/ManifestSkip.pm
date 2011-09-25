@@ -8,7 +8,7 @@
 # - Module::Manifest::Skip
 
 package Module::Install::ManifestSkip;
-use 5.008003;
+use 5.008001;
 use strict;
 use warnings;
 
@@ -18,7 +18,7 @@ my $requires = "
 use Module::Manifest::Skip 0.10 ();
 ";
 
-our $VERSION = '0.19';
+our $VERSION = '0.20';
 our $AUTHOR_ONLY = 1;
 
 my $skip_file = "MANIFEST.SKIP";

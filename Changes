@@ -1,4 +1,10 @@
 ---
+version: 0.20
+date:    Sun Sep 25 04:18:45 CEST 2011
+changes:
+- Require minimum perl 5.8.1
+- https://rt.cpan.org/Public/Bug/Display.html?id=71155
+---
 version: 0.19
 date:    Sun Jun  5 02:27:37 EST 2011
 changes:
