@@ -1,6 +1,6 @@
 use strict; use warnings;
 package Module::Install::ManifestSkip;
-our $VERSION = '0.21';
+our $VERSION = '0.22';
 
 use base 'Module::Install::Base';
 
