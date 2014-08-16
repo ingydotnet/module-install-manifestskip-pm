@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Module-Install-ManifestSkip
-version: 0.22
+version: 0.23
 abstract: Generate a MANIFEST.SKIP file
 homepage: https://metacpan.org/release/Module-Install-ManifestSkip
 
